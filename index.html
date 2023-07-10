@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<meta name="description" content="lorem ipsum">
+	<!-- Подключение jQuery -->
+	<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+	<!-- Подключение Bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<title>Тест</title>
+</head>
+<body>
+	<div class="wrapper"> 
+		<div class="block" id="main-block">
+			<h1>Adaptive RGB (GRB) blocks</h1>
+		</div>
+	</div>
+	<div class="wrapper">
+		<div class="block red" id="red"></div>
+		<div class="block green" id="green"></div>
+		<div class="block"></div>
+	</div>
+	<div class="wrapper">
+		<div class="block one-third">
+			<button type="button" onclick="hiddenButton()" class="btn btn-warning">Кнопка 1</button>
+		</div>
+		<div class="block two-thirds">
+			<button type="button" onclick="reverseBlocks()" class="btn btn-success">Кнопка 2</button>
+		</div>
+	</div>
+
+	<div id="modal" class="modal">
+		<div class="modal-content">
+			<span id="modal-close" class="modal-close">&#215;</span>
+			<h2>Привет, мир.</h2>
+		</div>
+	</div>
+	<script>
+		function hiddenButton() {
+			if (document.getElementById('main-block').classList.contains('hidden'))
+			{
+				document.getElementById('main-block').classList.remove('hidden');
+			}
+			else
+				document.getElementById('main-block').classList.add('hidden');
+		}
+		
+		function reverseBlocks() {
+			let redBlock = document.getElementById('red');
+			let greenBlock = document.getElementById('green');
+
+			let tempClass = redBlock.className;
+			redBlock.className = greenBlock.className;
+			greenBlock.className = tempClass;
+		}
+
+		window.addEventListener('load', function() {
+			document.getElementById('modal').style.display = 'block';
+			document.body.style.overflow = 'hidden';
+		});
+
+		document.getElementById('modal-close').addEventListener('click', function() {
+			document.getElementById('modal').style.display = 'none';
+			document.body.style.overflow = 'auto';
+		});
+	</script>
+</body>
+</html>
